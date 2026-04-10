@@ -14,27 +14,218 @@ notion_icon: "🌒"
 진행 중이거나 완료된 연구/과제를 기록합니다.
 [완료](완료/index.md)
 [진행 중](진행 중/index.md)
+<div class="atlas-columns">
+<div class="atlas-column-card">
+<div class="atlas-card-title">💼 Convention</div>
+<p class="atlas-card-text">개발, 운영 등의 프로세스에서 준수해야 하는 규칙입니다.</p>
+<p class="atlas-card-link"><a href="Convention/index.md">Convention</a></p>
+</div>
+<div class="atlas-column-card">
+<div class="atlas-card-title">🧾 Domains</div>
+<p class="atlas-card-text">진행한 프로젝트의 일반화된 도메인 문서를 관리합니다.</p>
+<p class="atlas-card-link"><a href="Domains/index.md">Domains</a></p>
+</div>
+</div>
 
-# 💼 Convention
-개발, 운영 등의 프로세스에서 준수해야 하는 규칙입니다.
-[Convention](Convention/index.md)
+<div class="atlas-columns">
+<div class="atlas-column-card">
+<div class="atlas-card-title">📖 Guide</div>
+<p class="atlas-card-text">솔루션, 서비스를 활용하는 가이드입니다.</p>
+<p class="atlas-card-link"><a href="Guide/index.md">Guide</a></p>
+</div>
+<div class="atlas-column-card">
+<div class="atlas-card-title">🗓️ Manual</div>
+<p class="atlas-card-text">일, 업무 등의 절차를 기술한 매뉴얼입니다.</p>
+<p class="atlas-card-link"><a href="Manual/index.md">Manual</a></p>
+</div>
+</div>
+<div class="atlas-columns">
+<div class="atlas-column-card">
+<div class="atlas-card-title">📚 Wiki</div>
+<p class="atlas-card-text">SCAILAB 위키입니다.</p>
+<p class="atlas-card-link"><a href="Wiki/index.md">Wiki</a></p>
+</div>
+<div class="atlas-column-card">
+<div class="atlas-card-title">💻 Lecture</div>
+<p class="atlas-card-text">수학, 개발, AI 등 다양한 분야의 강의 자료입니다.</p>
+<p class="atlas-card-link"><a href="Lecture/index.md">Lecture</a></p>
+</div>
+</div>
 
-# 🧾 Domains
-진행한 프로젝트의 일반화된 도메인 문서를 관리합니다.
-[Domains](Domains/index.md)
+## Page Tree
 
-# 📖 Guide
-솔루션, 서비스를 활용하는 가이드입니다.
-[Guide](Guide/index.md)
-
-# 🗓️ Manual
-일, 업무 등의 절차를 기술한 매뉴얼입니다.
-[Manual](Manual/index.md)
-
-# 📚 Wiki
-SCAILAB 위키입니다.
-[Wiki](Wiki/index.md)
-
-# 💻 Lecture
-수학, 개발, AI 등 다양한 분야의 강의 자료입니다.
-[Lecture](Lecture/index.md)
+- People
+  - [SCAI LAB의 동료들을 소개합니다.](SCAI LAB의 동료들을 소개합니다/index.md)
+- R&D
+  - [완료](완료/index.md)
+  - [진행 중](진행 중/index.md)
+    - [PassView](진행 중/PassView/index.md)
+      - [Feature](진행 중/PassView/Feature/index.md)
+      - [Screen](진행 중/PassView/Screen/index.md)
+    - [palcar](진행 중/palcar/index.md)
+- Convention
+  - [Convention](Convention/index.md)
+- Domains
+  - [Domains](Domains/index.md)
+    - [Domain Template](Domains/Domain Template/index.md)
+      - [도메인 스토리텔링](Domains/Domain Template/도메인 스토리텔링/index.md)
+      - [바운디드 컨텍스트](Domains/Domain Template/바운디드 컨텍스트/index.md)
+      - [UL](Domains/Domain Template/UL/index.md)
+      - [컨텍스트 맵](Domains/Domain Template/컨텍스트 맵/index.md)
+    - [에이전트 플랫폼](Domains/에이전트 플랫폼/index.md)
+      - [도메인 스토리텔링](Domains/에이전트 플랫폼/도메인 스토리텔링/index.md)
+      - [바운디드 컨텍스트](Domains/에이전트 플랫폼/바운디드 컨텍스트/index.md)
+      - [UL](Domains/에이전트 플랫폼/UL/index.md)
+      - [컨텍스트 맵](Domains/에이전트 플랫폼/컨텍스트 맵/index.md)
+    - [자동차 경매](Domains/자동차 경매/index.md)
+      - [도메인 스토리텔링](Domains/자동차 경매/도메인 스토리텔링/index.md)
+      - [바운디드 컨텍스트](Domains/자동차 경매/바운디드 컨텍스트/index.md)
+      - [UL](Domains/자동차 경매/UL/index.md)
+      - [컨텍스트 맵](Domains/자동차 경매/컨텍스트 맵/index.md)
+    - [OAuth 2.0](Domains/OAuth 2.0/index.md)
+    - [논문 검사 솔루션](Domains/논문 검사 솔루션/index.md)
+      - [도메인 스토리텔링](Domains/논문 검사 솔루션/도메인 스토리텔링/index.md)
+      - [바운디드 컨텍스트](Domains/논문 검사 솔루션/바운디드 컨텍스트/index.md)
+      - [UL](Domains/논문 검사 솔루션/UL/index.md)
+      - [컨텍스트 맵](Domains/논문 검사 솔루션/컨텍스트 맵/index.md)
+- Wiki
+  - [Wiki](Wiki/index.md)
+    - [Sales](Wiki/Sales/index.md)
+    - [Planning](Wiki/Planning/index.md)
+    - [Design](Wiki/Design/index.md)
+    - [Development](Wiki/Development/index.md)
+      - [개발](Wiki/Development/개발/index.md)
+        - [아키텍처 디자인](Wiki/Development/개발/아키텍처 디자인/index.md)
+          - [모놀리식 아키텍처(Monolithic Architecture)](Wiki/Development/개발/아키텍처 디자인/모놀리식 아키텍처(Monolithic Architecture)/index.md)
+          - [3 Layer(N-tier)](Wiki/Development/개발/아키텍처 디자인/3 Layer(N-tier)/index.md)
+          - [Hexagonal Architecture(Ports and Adapters)](Wiki/Development/개발/아키텍처 디자인/Hexagonal Architecture(Ports and Adapters)/index.md)
+          - [도메인 주도 설계 (Domain-Driven Design, DDD)](Wiki/Development/개발/아키텍처 디자인/도메인 주도 설계 (Domain-Driven Design, DDD)/index.md)
+            - [DDD의 정의](Wiki/Development/개발/아키텍처 디자인/도메인 주도 설계 (Domain-Driven Design, DDD)/DDD의 정의/index.md)
+            - [Domain](Wiki/Development/개발/아키텍처 디자인/도메인 주도 설계 (Domain-Driven Design, DDD)/Domain/index.md)
+            - [Bounded Context (BC)](Wiki/Development/개발/아키텍처 디자인/도메인 주도 설계 (Domain-Driven Design, DDD)/Bounded Context (BC)/index.md)
+            - [Context Map](Wiki/Development/개발/아키텍처 디자인/도메인 주도 설계 (Domain-Driven Design, DDD)/Context Map/index.md)
+            - [Modeling](Wiki/Development/개발/아키텍처 디자인/도메인 주도 설계 (Domain-Driven Design, DDD)/Modeling/index.md)
+            - [Ubiquitous Language (UL)](Wiki/Development/개발/아키텍처 디자인/도메인 주도 설계 (Domain-Driven Design, DDD)/Ubiquitous Language (UL)/index.md)
+            - [Aggregate](Wiki/Development/개발/아키텍처 디자인/도메인 주도 설계 (Domain-Driven Design, DDD)/Aggregate/index.md)
+            - [Entity](Wiki/Development/개발/아키텍처 디자인/도메인 주도 설계 (Domain-Driven Design, DDD)/Entity/index.md)
+            - [Value Object](Wiki/Development/개발/아키텍처 디자인/도메인 주도 설계 (Domain-Driven Design, DDD)/Value Object/index.md)
+            - [Domain Storytelling](Wiki/Development/개발/아키텍처 디자인/도메인 주도 설계 (Domain-Driven Design, DDD)/Domain Storytelling/index.md)
+          - [MSA(Microservice Architecture)](Wiki/Development/개발/아키텍처 디자인/MSA(Microservice Architecture)/index.md)
+          - [EDA(Event Driven Architecture)](Wiki/Development/개발/아키텍처 디자인/EDA(Event Driven Architecture)/index.md)
+          - [분산 시스템](Wiki/Development/개발/아키텍처 디자인/분산 시스템/index.md)
+          - [Message Queue](Wiki/Development/개발/아키텍처 디자인/Message Queue/index.md)
+      - [프론트](Wiki/Development/프론트/index.md)
+      - [백엔드](Wiki/Development/백엔드/index.md)
+      - [인프라](Wiki/Development/인프라/index.md)
+      - [데이터베이스](Wiki/Development/데이터베이스/index.md)
+      - [아키텍처 디자인](Wiki/Development/아키텍처 디자인/index.md)
+    - [Project Managing](Wiki/Project Managing/index.md)
+    - [Data Analysis](Wiki/Data Analysis/index.md)
+    - [Machine Learning](Wiki/Machine Learning/index.md)
+    - [LLM](Wiki/LLM/index.md)
+    - [VLM](Wiki/VLM/index.md)
+- Lecture
+  - [Lecture](Lecture/index.md)
+    - Math
+      - [AI를 위한 수학](Lecture/AI를 위한 수학/index.md)
+        - [01. 숫자와 계산의 감각](Lecture/AI를 위한 수학/01. 숫자와 계산의 감각/index.md)
+          - [1. 문자와 식, 다항식의 구조](Lecture/AI를 위한 수학/01. 숫자와 계산의 감각/1. 문자와 식, 다항식의 구조/index.md)
+          - [2. 방정식과 부등식](Lecture/AI를 위한 수학/01. 숫자와 계산의 감각/2. 방정식과 부등식/index.md)
+          - [3. 함수와 그래프](Lecture/AI를 위한 수학/01. 숫자와 계산의 감각/3. 함수와 그래프/index.md)
+          - [4. 지수와 로그](Lecture/AI를 위한 수학/01. 숫자와 계산의 감각/4. 지수와 로그/index.md)
+          - [5. 수열, 급수, 시그마](Lecture/AI를 위한 수학/01. 숫자와 계산의 감각/5. 수열, 급수, 시그마/index.md)
+          - [6. 삼각함수와 복소수](Lecture/AI를 위한 수학/01. 숫자와 계산의 감각/6. 삼각함수와 복소수/index.md)
+          - [문제 해설 - 01. 숫자와 계산의 감각](Lecture/AI를 위한 수학/01. 숫자와 계산의 감각/문제 해설 - 01. 숫자와 계산의 감각/index.md)
+        - [02. 벡터와 행렬의 시작](Lecture/AI를 위한 수학/02. 벡터와 행렬의 시작/index.md)
+          - [7. 벡터공간과 기저](Lecture/AI를 위한 수학/02. 벡터와 행렬의 시작/7. 벡터공간과 기저/index.md)
+          - [8. 행렬연산과 선형시스템](Lecture/AI를 위한 수학/02. 벡터와 행렬의 시작/8. 행렬연산과 선형시스템/index.md)
+          - [9. 선형변환과 고유값](Lecture/AI를 위한 수학/02. 벡터와 행렬의 시작/9. 선형변환과 고유값/index.md)
+          - [10. 직교성, 투영, 최소제곱](Lecture/AI를 위한 수학/02. 벡터와 행렬의 시작/10. 직교성, 투영, 최소제곱/index.md)
+          - [11. 특이값분해와 저랭크 근사](Lecture/AI를 위한 수학/02. 벡터와 행렬의 시작/11. 특이값분해와 저랭크 근사/index.md)
+          - [문제 해설 - 02. 식과 방정식의 언어](Lecture/AI를 위한 수학/02. 벡터와 행렬의 시작/문제 해설 - 02. 식과 방정식의 언어/index.md)
+        - [03. 그래프와 함수의 시야](Lecture/AI를 위한 수학/03. 그래프와 함수의 시야/index.md)
+          - [12. 극한, 연속, 미분](Lecture/AI를 위한 수학/03. 그래프와 함수의 시야/12. 극한, 연속, 미분/index.md)
+          - [13. 다변수미분과 Jacobian](Lecture/AI를 위한 수학/03. 그래프와 함수의 시야/13. 다변수미분과 Jacobian/index.md)
+          - [14. 적분, 누적량, 확률밀도](Lecture/AI를 위한 수학/03. 그래프와 함수의 시야/14. 적분, 누적량, 확률밀도/index.md)
+          - [15. Taylor 전개와 근사](Lecture/AI를 위한 수학/03. 그래프와 함수의 시야/15. Taylor 전개와 근사/index.md)
+          - [16. 미분방정식과 동역학](Lecture/AI를 위한 수학/03. 그래프와 함수의 시야/16. 미분방정식과 동역학/index.md)
+          - [문제 해설 - 03. 미적분과 해석](Lecture/AI를 위한 수학/03. 그래프와 함수의 시야/문제 해설 - 03. 미적분과 해석/index.md)
+        - [04. 경우의 수, 확률, 통계의 기초](Lecture/AI를 위한 수학/04. 경우의 수, 확률, 통계의 기초/index.md)
+          - [17. 조합론과 확률](Lecture/AI를 위한 수학/04. 경우의 수, 확률, 통계의 기초/17. 조합론과 확률/index.md)
+          - [18. 확률변수와 주요 분포](Lecture/AI를 위한 수학/04. 경우의 수, 확률, 통계의 기초/18. 확률변수와 주요 분포/index.md)
+          - [19. 기대값, 분산, 공분산](Lecture/AI를 위한 수학/04. 경우의 수, 확률, 통계의 기초/19. 기대값, 분산, 공분산/index.md)
+          - [20. 통계적 추정, MLE, MAP, 베이즈](Lecture/AI를 위한 수학/04. 경우의 수, 확률, 통계의 기초/20. 통계적 추정, MLE, MAP, 베이즈/index.md)
+          - [21. 가설검정, 신뢰구간, 실험설계](Lecture/AI를 위한 수학/04. 경우의 수, 확률, 통계의 기초/21. 가설검정, 신뢰구간, 실험설계/index.md)
+          - [문제 해설 - 04. 확률과 통계](Lecture/AI를 위한 수학/04. 경우의 수, 확률, 통계의 기초/문제 해설 - 04. 확률과 통계/index.md)
+        - [05. 최적화와 정보이론](Lecture/AI를 위한 수학/05. 최적화와 정보이론/index.md)
+          - [22. 볼록성, 제약최적화, 라그랑주](Lecture/AI를 위한 수학/05. 최적화와 정보이론/22. 볼록성, 제약최적화, 라그랑주/index.md)
+          - [23. 경사하강법, 모멘텀, Adam](Lecture/AI를 위한 수학/05. 최적화와 정보이론/23. 경사하강법, 모멘텀, Adam/index.md)
+          - [24. 수치선형대수와 자동미분](Lecture/AI를 위한 수학/05. 최적화와 정보이론/24. 수치선형대수와 자동미분/index.md)
+          - [25. 엔트로피, cross-entropy, KL divergence](Lecture/AI를 위한 수학/05. 최적화와 정보이론/25. 엔트로피, cross-entropy, KL divergence/index.md)
+          - [26. 일반화, 정규화, bias-variance](Lecture/AI를 위한 수학/05. 최적화와 정보이론/26. 일반화, 정규화, bias-variance/index.md)
+          - [문제 해설 - 05. 최적화와 정보이론](Lecture/AI를 위한 수학/05. 최적화와 정보이론/문제 해설 - 05. 최적화와 정보이론/index.md)
+        - [06. 머신러닝 이론](Lecture/AI를 위한 수학/06. 머신러닝 이론/index.md)
+          - [27. 선형회귀와 최소제곱](Lecture/AI를 위한 수학/06. 머신러닝 이론/27. 선형회귀와 최소제곱/index.md)
+          - [28. 로지스틱 회귀와 지수족](Lecture/AI를 위한 수학/06. 머신러닝 이론/28. 로지스틱 회귀와 지수족/index.md)
+          - [29. PCA와 잠재공간](Lecture/AI를 위한 수학/06. 머신러닝 이론/29. PCA와 잠재공간/index.md)
+          - [30. 커널방법과 RKHS 직관](Lecture/AI를 위한 수학/06. 머신러닝 이론/30. 커널방법과 RKHS 직관/index.md)
+          - [31. 그래픽모델, EM, 잠재변수](Lecture/AI를 위한 수학/06. 머신러닝 이론/31. 그래픽모델, EM, 잠재변수/index.md)
+          - [문제 해설 - 06. 머신러닝 이론](Lecture/AI를 위한 수학/06. 머신러닝 이론/문제 해설 - 06. 머신러닝 이론/index.md)
+        - [07. 딥러닝과 생성모델](Lecture/AI를 위한 수학/07. 딥러닝과 생성모델/index.md)
+          - [32. 신경망, 계산그래프, backprop](Lecture/AI를 위한 수학/07. 딥러닝과 생성모델/32. 신경망, 계산그래프, backprop/index.md)
+          - [33. 초기화, 정규화, residual, optimization tricks](Lecture/AI를 위한 수학/07. 딥러닝과 생성모델/33. 초기화, 정규화, residual, optimization tricks/index.md)
+          - [34. self-supervised learning과 표현학습](Lecture/AI를 위한 수학/07. 딥러닝과 생성모델/34. self-supervised learning과 표현학습/index.md)
+          - [35. variational inference, ELBO, VAE](Lecture/AI를 위한 수학/07. 딥러닝과 생성모델/35. variational inference, ELBO, VAE/index.md)
+          - [36. 확률과정, score matching, diffusion](Lecture/AI를 위한 수학/07. 딥러닝과 생성모델/36. 확률과정, score matching, diffusion/index.md)
+          - [문제 해설 - 07. 딥러닝과 생성모델](Lecture/AI를 위한 수학/07. 딥러닝과 생성모델/문제 해설 - 07. 딥러닝과 생성모델/index.md)
+        - [08. LLM, VLM, 멀티모달 AI 수학](Lecture/AI를 위한 수학/08. LLM, VLM, 멀티모달 AI 수학/index.md)
+          - [37. Attention, Transformer, positional math](Lecture/AI를 위한 수학/08. LLM, VLM, 멀티모달 AI 수학/37. Attention, Transformer, positional math/index.md)
+          - [38. LLM pretraining, scaling laws, tokenization](Lecture/AI를 위한 수학/08. LLM, VLM, 멀티모달 AI 수학/38. LLM pretraining, scaling laws, tokenization/index.md)
+          - [39. Alignment SFT, RLHF, DPO](Lecture/AI를 위한 수학/08. LLM, VLM, 멀티모달 AI 수학/39. Alignment SFT, RLHF, DPO/index.md)
+          - [40. CLIP, contrastive learning, multimodal alignment](Lecture/AI를 위한 수학/08. LLM, VLM, 멀티모달 AI 수학/40. CLIP, contrastive learning, multimodal alignment/index.md)
+          - [41. VLM, multimodal generation, fusion architectures](Lecture/AI를 위한 수학/08. LLM, VLM, 멀티모달 AI 수학/41. VLM, multimodal generation, fusion architectures/index.md)
+          - [42. Frontier topics optimal transport, graphs, manifolds, mechanistic interpretability, 최신 논문 독해](Lecture/AI를 위한 수학/08. LLM, VLM, 멀티모달 AI 수학/42. Frontier topics optimal transport, graphs, manifolds, mechanistic interpretability, 최신 논문 독해/index.md)
+          - [문제 해설 - 08. LLM, VLM, 멀티모달 AI 수학](Lecture/AI를 위한 수학/08. LLM, VLM, 멀티모달 AI 수학/문제 해설 - 08. LLM, VLM, 멀티모달 AI 수학/index.md)
+    - Development
+      - [풀스택실전스터디](Lecture/풀스택실전스터디/index.md)
+        - [커리큘럼](Lecture/풀스택실전스터디/커리큘럼/index.md)
+        - [Lecture Sync Test](Lecture/풀스택실전스터디/Lecture Sync Test/index.md)
+- [Guide](Guide/index.md)
+  - [00. SCAI LAB Guide 사용법](Guide/00. SCAI LAB Guide 사용법/index.md)
+  - [10. 연구실 운영 개요](Guide/10. 연구실 운영 개요/index.md)
+  - [20. 계정과 접근](Guide/20. 계정과 접근/index.md)
+  - [30. 연구실 업무 도구](Guide/30. 연구실 업무 도구/index.md)
+  - [40. 연구/개발 환경](Guide/40. 연구-개발 환경/index.md)
+  - [50. 인프라와 플랫폼](Guide/50. 인프라와 플랫폼/index.md)
+    - [k3s GitOps 운영 클러스터 초보자 가이드](Guide/50. 인프라와 플랫폼/k3s GitOps 운영 클러스터 초보자 가이드/index.md)
+    - [Kubernetes 기본 구조 가이드](Guide/50. 인프라와 플랫폼/Kubernetes 기본 구조 가이드/index.md)
+    - [k3s 운영 구조 가이드](Guide/50. 인프라와 플랫폼/k3s 운영 구조 가이드/index.md)
+    - [GitOps 운영 모델 가이드](Guide/50. 인프라와 플랫폼/GitOps 운영 모델 가이드/index.md)
+    - [ArgoCD 운영 흐름 가이드](Guide/50. 인프라와 플랫폼/ArgoCD 운영 흐름 가이드/index.md)
+    - [Infisical 시크릿 관리 가이드](Guide/50. 인프라와 플랫폼/Infisical 시크릿 관리 가이드/index.md)
+    - [Observability 운영 가이드](Guide/50. 인프라와 플랫폼/Observability 운영 가이드/index.md)
+  - [60. 서비스 운영](Guide/60. 서비스 운영/index.md)
+  - [70. 데이터, 관측, 보안](Guide/70. 데이터, 관측, 보안/index.md)
+    - [운영 장애 Discord 리포트 솔루션 리서치](Guide/70. 데이터, 관측, 보안/운영 장애 Discord 리포트 솔루션 리서치/index.md)
+    - [k3s 운영 장애 Discord 리포트 설계](Guide/70. 데이터, 관측, 보안/k3s 운영 장애 Discord 리포트 설계/index.md)
+  - [80. 협업과 커뮤니케이션](Guide/80. 협업과 커뮤니케이션/index.md)
+  - [90. 장애 대응과 운영 판단](Guide/90. 장애 대응과 운영 판단/index.md)
+- [Manual](Manual/index.md)
+  - [00. SCAI LAB Manual 사용법](Manual/00. SCAI LAB Manual 사용법/index.md)
+  - [10. 계정 발급과 회수](Manual/10. 계정 발급과 회수/index.md)
+  - [20. 외부 로그인 설정](Manual/20. 외부 로그인 설정/index.md)
+    - [구글로그인](Manual/20. 외부 로그인 설정/구글로그인/index.md)
+    - [카카오로그인](Manual/20. 외부 로그인 설정/카카오로그인/index.md)
+  - [30. 서버와 배포 작업](Manual/30. 서버와 배포 작업/index.md)
+    - [k3s 클러스터 접속과 GitOps 배포 점검](Manual/30. 서버와 배포 작업/k3s 클러스터 접속과 GitOps 배포 점검/index.md)
+  - [40. 운영 변경 작업](Manual/40. 운영 변경 작업/index.md)
+    - [Ingress, 도메인, 이미지, 환경 변수 변경 절차](Manual/40. 운영 변경 작업/Ingress, 도메인, 이미지, 환경 변수 변경 절차/index.md)
+  - [50. 모니터링/로그 작업](Manual/50. 모니터링-로그 작업/index.md)
+    - [Grafana, Kibana, Tempo 1차 장애 확인 절차](Manual/50. 모니터링-로그 작업/Grafana, Kibana, Tempo 1차 장애 확인 절차/index.md)
+  - [60. 시크릿/권한 작업](Manual/60. 시크릿-권한 작업/index.md)
+    - [Infisical 시크릿 반영과 권한 변경 절차](Manual/60. 시크릿-권한 작업/Infisical 시크릿 반영과 권한 변경 절차/index.md)
+  - [70. 서비스별 운영 작업](Manual/70. 서비스별 운영 작업/index.md)
+    - [서비스 배포 이상 1차 대응 절차](Manual/70. 서비스별 운영 작업/서비스 배포 이상 1차 대응 절차/index.md)
+    - [do4i 배포 이상 대응 절차](Manual/70. 서비스별 운영 작업/do4i 배포 이상 대응 절차/index.md)
+    - [palcar 배포 이상 대응 절차](Manual/70. 서비스별 운영 작업/palcar 배포 이상 대응 절차/index.md)
+    - [papersens 배포 이상 대응 절차](Manual/70. 서비스별 운영 작업/papersens 배포 이상 대응 절차/index.md)

@@ -15,3 +15,7 @@ parent_notion_id: 330e313f58b98098b619f0e3ef2d0fa0
 현재 운영 기준으로 먼저 볼 문서는 아래다.
 
 - `k3s 클러스터 접속과 GitOps 배포 점검`: 운영 서버 접속, live GitOps 기준 확인, `kubectl` 과 `Application` 상태 점검 절차
+
+## Page Tree
+
+- [k3s 클러스터 접속과 GitOps 배포 점검](k3s 클러스터 접속과 GitOps 배포 점검/index.md)

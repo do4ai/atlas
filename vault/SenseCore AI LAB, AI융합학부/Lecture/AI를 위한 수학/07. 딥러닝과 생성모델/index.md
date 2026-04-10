@@ -47,3 +47,12 @@ parent_notion_id: 32be313f58b981e7b26fea2d45e6fa7f
 [35. variational inference, ELBO, VAE](35. variational inference, ELBO, VAE/index.md)
 [36. 확률과정, score matching, diffusion](36. 확률과정, score matching, diffusion/index.md)
 [문제 해설 - 07. 딥러닝과 생성모델](문제 해설 - 07. 딥러닝과 생성모델/index.md)
+
+## Page Tree
+
+- [32. 신경망, 계산그래프, backprop](32. 신경망, 계산그래프, backprop/index.md)
+- [33. 초기화, 정규화, residual, optimization tricks](33. 초기화, 정규화, residual, optimization tricks/index.md)
+- [34. self-supervised learning과 표현학습](34. self-supervised learning과 표현학습/index.md)
+- [35. variational inference, ELBO, VAE](35. variational inference, ELBO, VAE/index.md)
+- [36. 확률과정, score matching, diffusion](36. 확률과정, score matching, diffusion/index.md)
+- [문제 해설 - 07. 딥러닝과 생성모델](문제 해설 - 07. 딥러닝과 생성모델/index.md)

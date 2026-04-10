@@ -30,3 +30,13 @@ parent_notion_id: 330e313f58b9802b9cedda8dcbc5d112
 - 이곳은 개념과 구조를 설명한다.
 - 날짜별 상태, 특정 장애 기록, 일회성 운영 메모는 별도 운영 문서에서 다룬다.
 - 실제 변경 절차와 검증, 롤백은 `Manual`에서 다룬다.
+
+## Page Tree
+
+- [k3s GitOps 운영 클러스터 초보자 가이드](k3s GitOps 운영 클러스터 초보자 가이드/index.md)
+- [Kubernetes 기본 구조 가이드](Kubernetes 기본 구조 가이드/index.md)
+- [k3s 운영 구조 가이드](k3s 운영 구조 가이드/index.md)
+- [GitOps 운영 모델 가이드](GitOps 운영 모델 가이드/index.md)
+- [ArgoCD 운영 흐름 가이드](ArgoCD 운영 흐름 가이드/index.md)
+- [Infisical 시크릿 관리 가이드](Infisical 시크릿 관리 가이드/index.md)
+- [Observability 운영 가이드](Observability 운영 가이드/index.md)

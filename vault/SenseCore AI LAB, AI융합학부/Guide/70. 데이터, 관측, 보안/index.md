@@ -15,3 +15,8 @@ parent_notion_id: 330e313f58b9802b9cedda8dcbc5d112
 단계별 클릭 순서나 변경 절차처럼 그대로 따라 해야 하는 작업은 `Manual`에서 관리한다.
 
 Grafana, Prometheus, ELK, Tempo, Infisical 같은 운영 솔루션 가이드는 이 영역 아래에 배치하고, 설계 검토 문서는 운영 가이드와 구분해 유지한다.
+
+## Page Tree
+
+- [운영 장애 Discord 리포트 솔루션 리서치](운영 장애 Discord 리포트 솔루션 리서치/index.md)
+- [k3s 운영 장애 Discord 리포트 설계](k3s 운영 장애 Discord 리포트 설계/index.md)

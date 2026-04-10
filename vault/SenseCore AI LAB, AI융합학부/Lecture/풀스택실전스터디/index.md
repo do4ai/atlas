@@ -10,3 +10,8 @@ parent_notion_id: 32be313f58b980078dbbeed4f006f95b
 커리큘럼
 개발 컨벤션
 [Lecture Sync Test](Lecture Sync Test/index.md)
+
+## Page Tree
+
+- [커리큘럼](커리큘럼/index.md)
+- [Lecture Sync Test](Lecture Sync Test/index.md)
