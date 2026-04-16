@@ -169,7 +169,7 @@ body {
   padding: 2.25rem 0 4.5rem;
 }
 
-.cm-editor {
+#sb-editor > .cm-editor {
   background: #fffdf8;
   border: 1px solid #dcc7a6;
   border-radius: 22px;
@@ -177,7 +177,7 @@ body {
   padding: 1.25rem 0;
 }
 
-.cm-scroller {
+#sb-editor > .cm-editor > .cm-scroller {
   padding: 0 1.75rem 2.5rem;
 }
 
