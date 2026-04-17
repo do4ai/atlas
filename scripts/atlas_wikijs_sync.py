@@ -159,6 +159,8 @@ def ensure_setup(
     looks_like_setup = (
         "finalize" in body.lower()
         or "<title>setup" in body.lower()
+        or "wiki.js setup" in body.lower()
+        or "<setup" in body.lower()
         or "set up your wiki" in body.lower()
     )
     if not looks_like_setup:
