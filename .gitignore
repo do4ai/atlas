@@ -2,3 +2,13 @@
 .obsidian/workspace.json
 .obsidian/workspace-mobile.json
 vault/.silverbullet.auth.json
+
+# Local agent/tooling state
+.codex/
+
+# Local assistant guidance files
+AGENTS.md
+CLAUDE.md
+
+# Local screenshots and debugging captures
+images/
