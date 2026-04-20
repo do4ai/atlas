@@ -20,6 +20,7 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_VAULT_ROOT = REPO_ROOT / "vault"
 DEFAULT_BASE_URL = "http://127.0.0.1:3000"
 DEFAULT_SITE_URL = "https://wiki.do4ai.com"
+DEFAULT_SITE_TITLE = "do4ai Wiki"
 DEFAULT_LOCALE = "en"
 DEFAULT_NAVIGATION_MODE = "TREE"
 SYNC_TAG = "atlas-sync"
@@ -275,15 +276,67 @@ def login(base_url: str, username: str, password: str) -> str:
 
 def inject_managed_block(existing: str, start_marker: str, end_marker: str, payload: str) -> str:
     content = existing.replace(LEGACY_SB_CLIENT_CLEANUP_HEAD, "").strip()
-    block = f"{start_marker}\n{payload.rstrip()}\n{end_marker}"
     pattern = re.compile(re.escape(start_marker) + r".*?" + re.escape(end_marker), flags=re.DOTALL)
-    if pattern.search(content):
-        updated = pattern.sub(block, content, count=1)
-    elif content:
-        updated = f"{content}\n\n{block}"
-    else:
-        updated = block
+    content = pattern.sub("", content).strip()
+    block = f"{start_marker}\n{payload.rstrip()}\n{end_marker}"
+    updated = f"{content}\n\n{block}" if content else block
     return updated.rstrip() + "\n"
+
+
+def minify_css_for_match(css: str) -> str:
+    normalized = re.sub(r"/\*.*?\*/", "", css, flags=re.DOTALL)
+    normalized = re.sub(r"\s+", " ", normalized).strip()
+    normalized = re.sub(r"\s*([{}:;,>+])\s*", r"\1", normalized)
+    normalized = re.sub(r";}", "}", normalized)
+    normalized = re.sub(r"(?<![\d])0+\.(\d+)", r".\1", normalized)
+    return normalized.strip()
+
+
+def ensure_site_config(base_url: str, token: str, *, site_url: str, site_title: str) -> None:
+    data = graphql(
+        base_url,
+        """
+        query CurrentSiteConfig {
+          site {
+            config {
+              host
+              title
+            }
+          }
+        }
+        """,
+        {},
+        token=token,
+        timeout=30,
+    )
+    config = data["site"]["config"]
+    desired_host = site_url.rstrip("/")
+    desired_title = site_title.strip()
+    if config.get("host") == desired_host and config.get("title") == desired_title:
+        return
+
+    data = graphql(
+        base_url,
+        """
+        mutation UpdateSiteConfig($host: String!, $title: String!) {
+          site {
+            updateConfig(host: $host, title: $title) {
+              responseResult {
+                succeeded
+                slug
+                message
+              }
+            }
+          }
+        }
+        """,
+        {"host": desired_host, "title": desired_title},
+        token=token,
+        timeout=30,
+    )
+    response = data["site"]["updateConfig"]["responseResult"]
+    if not response["succeeded"]:
+        raise WikiSyncError(response.get("message") or response.get("slug") or "failed to update site config")
 
 
 def ensure_client_cleanup_theming(base_url: str, token: str) -> None:
@@ -315,13 +368,10 @@ def ensure_client_cleanup_theming(base_url: str, token: str) -> None:
         MANAGED_HEAD_END,
         LEGACY_SB_CLIENT_CLEANUP_HEAD,
     )
-    desired_css = inject_managed_block(
-        str(config.get("injectCSS") or ""),
-        MANAGED_CSS_START,
-        MANAGED_CSS_END,
-        ATLAS_THEME_CSS,
-    )
-    if (config.get("injectHead") or "") == desired_head and (config.get("injectCSS") or "") == desired_css:
+    desired_css = ATLAS_THEME_CSS.rstrip() + "\n"
+    current_css = str(config.get("injectCSS") or "")
+    css_matches = minify_css_for_match(current_css) == minify_css_for_match(desired_css)
+    if (config.get("injectHead") or "") == desired_head and css_matches:
         return
 
     data = graphql(
@@ -422,6 +472,7 @@ def ensure_setup(
     *,
     base_url: str,
     site_url: str,
+    site_title: str,
     admin_email: str,
     admin_password: str,
     timeout_seconds: int,
@@ -429,7 +480,8 @@ def ensure_setup(
 ) -> None:
     wait_for_http(base_url, timeout_seconds=timeout_seconds, verbose=verbose)
     try:
-        login(base_url, admin_email, admin_password)
+        token = login(base_url, admin_email, admin_password)
+        ensure_site_config(base_url, token, site_url=site_url, site_title=site_title)
         debug(verbose, "Wiki.js is already initialized")
         return
     except WikiSyncError:
@@ -467,7 +519,8 @@ def ensure_setup(
     while time.time() < deadline:
         try:
             wait_for_http(base_url, timeout_seconds=30, verbose=verbose)
-            login(base_url, admin_email, admin_password)
+            token = login(base_url, admin_email, admin_password)
+            ensure_site_config(base_url, token, site_url=site_url, site_title=site_title)
             debug(verbose, "Wiki.js setup completed")
             return
         except Exception:
@@ -995,6 +1048,8 @@ def delete_page(base_url: str, token: str, page_id: int, page_path: str) -> None
 def sync_pages(
     *,
     base_url: str,
+    site_url: str,
+    site_title: str,
     admin_email: str,
     admin_password: str,
     locale: str,
@@ -1015,6 +1070,7 @@ def sync_pages(
         return
 
     token = login(base_url, admin_email, admin_password)
+    ensure_site_config(base_url, token, site_url=site_url, site_title=site_title)
     ensure_client_cleanup_theming(base_url, token)
     ensure_navigation_mode(base_url, token, navigation_mode)
     remote_pages = list_remote_pages(base_url, token, locale)
@@ -1077,6 +1133,7 @@ def parse_args(argv: Sequence[str]) -> argparse.Namespace:
     common = argparse.ArgumentParser(add_help=False)
     common.add_argument("--base-url", default=os.environ.get("WIKIJS_BASE_URL", DEFAULT_BASE_URL))
     common.add_argument("--site-url", default=os.environ.get("WIKIJS_SITE_URL", DEFAULT_SITE_URL))
+    common.add_argument("--site-title", default=os.environ.get("WIKIJS_SITE_TITLE", DEFAULT_SITE_TITLE))
     common.add_argument("--admin-email", default=os.environ.get("WIKIJS_ADMIN_EMAIL", "atlas-admin@do4ai.com"))
     common.add_argument("--admin-password", default=os.environ.get("WIKIJS_ADMIN_PASSWORD"))
     common.add_argument("--locale", default=os.environ.get("WIKIJS_LOCALE", DEFAULT_LOCALE))
@@ -1116,6 +1173,7 @@ def main(argv: Sequence[str]) -> int:
         ensure_setup(
             base_url=args.base_url,
             site_url=args.site_url,
+            site_title=args.site_title,
             admin_email=args.admin_email,
             admin_password=args.admin_password,
             timeout_seconds=args.timeout_seconds,
@@ -1126,6 +1184,8 @@ def main(argv: Sequence[str]) -> int:
     if args.command == "sync":
         sync_pages(
             base_url=args.base_url,
+            site_url=args.site_url,
+            site_title=args.site_title,
             admin_email=args.admin_email,
             admin_password=args.admin_password,
             locale=args.locale,
