@@ -23,6 +23,7 @@ DEFAULT_SITE_URL = "https://wiki.do4ai.com"
 DEFAULT_SITE_TITLE = "do4ai Wiki"
 DEFAULT_LOCALE = "en"
 DEFAULT_NAVIGATION_MODE = "TREE"
+DATA_SOURCES_ROOT = "Data Sources"
 SYNC_TAG = "atlas-sync"
 STATE_VERSION = 1
 MANAGED_HEAD_START = "<!-- atlas-managed:inject-head:start -->"
@@ -656,10 +657,53 @@ def rewrite_standalone_links_as_list(body: str) -> str:
     return "".join(segment if is_code else rewrite_segment(segment) for is_code, segment in split_code_fences(body))
 
 
+def ensure_table_separation(body: str) -> str:
+    def rewrite_segment(segment: str) -> str:
+        lines = segment.splitlines()
+        rewritten: List[str] = []
+        for line in lines:
+            stripped = line.strip()
+            is_table_line = stripped.startswith("|") and stripped.endswith("|")
+            prev_is_table_line = False
+            if rewritten:
+                prev = rewritten[-1].strip()
+                prev_is_table_line = prev.startswith("|") and prev.endswith("|")
+            if is_table_line and rewritten and rewritten[-1].strip() and not prev_is_table_line:
+                rewritten.append("")
+            rewritten.append(line)
+        rebuilt = "\n".join(rewritten)
+        if segment.endswith("\n"):
+            rebuilt += "\n"
+        return rebuilt
+
+    return "".join(segment if is_code else rewrite_segment(segment) for is_code, segment in split_code_fences(body))
+
+
+def strip_page_tree_section(body: str) -> str:
+    page_tree_section = re.compile(r"(?ms)^[ \t]*##[ \t]+Page Tree[ \t]*\n.*?(?=^[ \t]*##[ \t]+|^[ \t]*#[ \t]+|\Z)")
+
+    def rewrite_segment(segment: str) -> str:
+        updated = page_tree_section.sub("", segment)
+        updated = re.sub(r"\n{3,}", "\n\n", updated)
+        return updated.strip()
+
+    rebuilt: List[str] = []
+    for is_code, segment in split_code_fences(body):
+        if is_code:
+            rebuilt.append(segment)
+            continue
+        cleaned = rewrite_segment(segment)
+        if cleaned:
+            rebuilt.append(cleaned)
+    return "\n".join(part for part in rebuilt if part).strip()
+
+
 def normalize_body(body: str, title: str) -> str:
     normalized = body.replace("\r\n", "\n").strip()
+    normalized = strip_page_tree_section(normalized)
     normalized = add_title_heading(normalized, title)
     normalized = rewrite_standalone_links_as_list(normalized)
+    normalized = ensure_table_separation(normalized)
     return normalized.strip() + "\n"
 
 
@@ -685,8 +729,33 @@ def slugify_segment(segment: str) -> str:
     return slug or "page"
 
 
-def logical_segments(rel_path: str) -> List[str]:
+def infer_primary_workspace_root(rel_paths: Sequence[str]) -> Optional[str]:
+    top_level_dirs = set()
+    for rel_path in rel_paths:
+        rel = Path(rel_path)
+        if rel_path == "index.md" or not rel.parts:
+            continue
+        if rel.parts[0] == DATA_SOURCES_ROOT:
+            continue
+        top_level_dirs.add(rel.parts[0])
+    if len(top_level_dirs) == 1:
+        return next(iter(top_level_dirs))
+    return None
+
+
+def default_logical_segments(rel_path: str, primary_workspace_root: Optional[str]) -> List[str]:
     rel = Path(rel_path)
+    if primary_workspace_root:
+        workspace_prefix = f"{primary_workspace_root}/"
+        if rel_path == f"{primary_workspace_root}/index.md":
+            return ["home"]
+        if rel_path.startswith(workspace_prefix):
+            nested_rel = rel.relative_to(primary_workspace_root)
+            if nested_rel.name == "index.md":
+                parts = ["home", *nested_rel.parent.parts]
+            else:
+                parts = ["home", *nested_rel.parent.parts, nested_rel.stem]
+            return [slugify_segment(part) for part in parts if part not in {"", "."}]
     if rel_path == "index.md":
         return ["home"]
     if rel.name == "index.md":
@@ -696,8 +765,59 @@ def logical_segments(rel_path: str) -> List[str]:
     return [slugify_segment(part) for part in parts if part not in {"", "."}]
 
 
-def build_path_map(rel_paths: Sequence[str]) -> Dict[str, str]:
-    proposals: Dict[str, List[str]] = {rel_path: logical_segments(rel_path) for rel_path in rel_paths}
+def build_path_map(vault_root: Path, rel_paths: Sequence[str]) -> Dict[str, str]:
+    metadata_by_rel: Dict[str, Dict[str, str]] = {}
+    notion_rel_by_id: Dict[str, str] = {}
+    for rel_path in rel_paths:
+        raw = (vault_root / rel_path).read_text(encoding="utf-8-sig")
+        metadata, _ = split_frontmatter(raw)
+        metadata_by_rel[rel_path] = metadata
+        notion_id = metadata.get("notion_id", "").strip()
+        if notion_id:
+            notion_rel_by_id[notion_id] = rel_path
+
+    primary_workspace_root = infer_primary_workspace_root(rel_paths)
+    resolved_segments: Dict[str, List[str]] = {}
+    resolving: set[str] = set()
+
+    def fallback_data_source_segments(rel_path: str) -> List[str]:
+        rel = Path(rel_path)
+        title = metadata_by_rel.get(rel_path, {}).get("title") or (rel.parent.name if rel.name == "index.md" else rel.stem)
+        if primary_workspace_root:
+            return ["home", "data-sources", slugify_segment(title)]
+        return [slugify_segment(DATA_SOURCES_ROOT), slugify_segment(title)]
+
+    def resolve_segments(rel_path: str) -> List[str]:
+        if rel_path in resolved_segments:
+            return resolved_segments[rel_path]
+        if rel_path in resolving:
+            return fallback_data_source_segments(rel_path)
+
+        resolving.add(rel_path)
+        rel = Path(rel_path)
+        metadata = metadata_by_rel.get(rel_path, {})
+        source_kind = metadata.get("source_kind", "")
+
+        if rel.parts and rel.parts[0] == DATA_SOURCES_ROOT:
+            if source_kind == "row":
+                data_source_rel = (rel.parent.parent / "index.md").as_posix()
+                segments = [*resolve_segments(data_source_rel), "rows", slugify_segment(rel.stem)]
+            elif rel.name == "index.md" and source_kind == "data_source":
+                parent_rel = notion_rel_by_id.get(metadata.get("parent_notion_id", "").strip(), "")
+                if parent_rel and parent_rel != rel_path:
+                    segments = [*resolve_segments(parent_rel), "data-sources", slugify_segment(metadata.get("title") or rel.parent.name)]
+                else:
+                    segments = fallback_data_source_segments(rel_path)
+            else:
+                segments = fallback_data_source_segments(rel_path)
+        else:
+            segments = default_logical_segments(rel_path, primary_workspace_root)
+
+        resolving.remove(rel_path)
+        resolved_segments[rel_path] = segments
+        return segments
+
+    proposals: Dict[str, List[str]] = {rel_path: resolve_segments(rel_path) for rel_path in rel_paths}
     collisions: Dict[str, List[str]] = {}
     for rel_path, segments in proposals.items():
         collisions.setdefault("/".join(segments), []).append(rel_path)
@@ -840,7 +960,11 @@ def build_page_specs(vault_root: Path) -> List[PageSpec]:
     vault_root = vault_root.resolve()
     files = iter_content_files(vault_root)
     rel_paths = [path.relative_to(vault_root).as_posix() for path in files]
-    wiki_paths = build_path_map(rel_paths)
+    primary_workspace_root = infer_primary_workspace_root(rel_paths)
+    if primary_workspace_root:
+        files = [path for path in files if path.relative_to(vault_root).as_posix() != "index.md"]
+        rel_paths = [path.relative_to(vault_root).as_posix() for path in files]
+    wiki_paths = build_path_map(vault_root, rel_paths)
     pages: List[PageSpec] = []
 
     for path in files:

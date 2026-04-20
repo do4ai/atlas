@@ -17,6 +17,11 @@ python3 scripts/notion_obsidian_export.py seed-repo --repo-dir ../wiki
 
 GitOps 저장소는 이 저장소를 주기적으로 pull 한 뒤 `scripts/wiki_wikijs_sync.py`로 Wiki.js에 반영한다.
 
+Wiki.js 경로는 현재 최상위 workspace인 `SenseCore AI LAB, AI융합학부`를 실질적인 홈(`/home`)으로 승격해서 동기화한다.
+루트 `vault/index.md`는 중복 허브로 취급해 동기화하지 않는다.
+`vault/Data Sources/`는 가능한 경우 원래 Notion 부모 페이지 아래 `data-sources/`로 중첩되고, 부모를 복원할 수 없는 항목만 workspace 홈 아래 `data-sources/`로 남긴다.
+문서 본문의 `## Page Tree` 섹션은 Wiki.js 사이드바와 중복되므로 sync 시 제거한다.
+
 ## Wiki.js 동기화
 
 로컬에서 경로 매핑과 링크 재작성을 점검하려면 dry-run을 사용한다.
