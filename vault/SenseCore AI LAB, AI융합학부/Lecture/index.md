@@ -9,6 +9,7 @@ parent_notion_id: 31ee313f58b980d68c5ad8ed9d5aeff8
 # Lecture
 ## Math
 [AI를 위한 수학](AI를 위한 수학/index.md)
+[VLM을 위한 수학과 구조](VLM을 위한 수학과 구조/index.md)
 ## Development
 [풀스택실전스터디](풀스택실전스터디/index.md)
 
@@ -74,6 +75,27 @@ parent_notion_id: 31ee313f58b980d68c5ad8ed9d5aeff8
       - [41. VLM, multimodal generation, fusion architectures](AI를 위한 수학/08. LLM, VLM, 멀티모달 AI 수학/41. VLM, multimodal generation, fusion architectures/index.md)
       - [42. Frontier topics optimal transport, graphs, manifolds, mechanistic interpretability, 최신 논문 독해](AI를 위한 수학/08. LLM, VLM, 멀티모달 AI 수학/42. Frontier topics optimal transport, graphs, manifolds, mechanistic interpretability, 최신 논문 독해/index.md)
       - [문제 해설 - 08. LLM, VLM, 멀티모달 AI 수학](AI를 위한 수학/08. LLM, VLM, 멀티모달 AI 수학/문제 해설 - 08. LLM, VLM, 멀티모달 AI 수학/index.md)
+  - [VLM을 위한 수학과 구조](VLM을 위한 수학과 구조/index.md)
+    - [01. 이미지를 토큰으로 바꾸는 시야](VLM을 위한 수학과 구조/01. 이미지를 토큰으로 바꾸는 시야/index.md)
+      - [1. 패치, feature map, vision token](VLM을 위한 수학과 구조/01. 이미지를 토큰으로 바꾸는 시야/1. 패치, feature map, vision token/index.md)
+      - [2. CNN, ViT, vision encoder 비교](VLM을 위한 수학과 구조/01. 이미지를 토큰으로 바꾸는 시야/2. CNN, ViT, vision encoder 비교/index.md)
+      - [3. projector, adapter, connector](VLM을 위한 수학과 구조/01. 이미지를 토큰으로 바꾸는 시야/3. projector, adapter, connector/index.md)
+    - [02. 이미지와 텍스트를 같은 공간에 맞추기](VLM을 위한 수학과 구조/02. 이미지와 텍스트를 같은 공간에 맞추기/index.md)
+      - [4. CLIP, contrastive learning, shared embedding](VLM을 위한 수학과 구조/02. 이미지와 텍스트를 같은 공간에 맞추기/4. CLIP, contrastive learning, shared embedding/index.md)
+      - [5. hard negative, temperature, retrieval](VLM을 위한 수학과 구조/02. 이미지와 텍스트를 같은 공간에 맞추기/5. hard negative, temperature, retrieval/index.md)
+      - [6. multimodal pretraining objective와 data mixture](VLM을 위한 수학과 구조/02. 이미지와 텍스트를 같은 공간에 맞추기/6. multimodal pretraining objective와 data mixture/index.md)
+    - [03. VLM 아키텍처와 정보 흐름](VLM을 위한 수학과 구조/03. VLM 아키텍처와 정보 흐름/index.md)
+      - [7. early fusion, late fusion, encoder-decoder](VLM을 위한 수학과 구조/03. VLM 아키텍처와 정보 흐름/7. early fusion, late fusion, encoder-decoder/index.md)
+      - [8. cross-attention, Q-Former, resampler](VLM을 위한 수학과 구조/03. VLM 아키텍처와 정보 흐름/8. cross-attention, Q-Former, resampler/index.md)
+      - [9. decoder-only VLM, prefix tuning, visual prompt](VLM을 위한 수학과 구조/03. VLM 아키텍처와 정보 흐름/9. decoder-only VLM, prefix tuning, visual prompt/index.md)
+    - [04. Grounding, OCR, 멀티모달 정렬](VLM을 위한 수학과 구조/04. Grounding, OCR, 멀티모달 정렬/index.md)
+      - [10. grounding, OCR, region reasoning](VLM을 위한 수학과 구조/04. Grounding, OCR, 멀티모달 정렬/10. grounding, OCR, region reasoning/index.md)
+      - [11. hallucination, faithfulness, evaluation](VLM을 위한 수학과 구조/04. Grounding, OCR, 멀티모달 정렬/11. hallucination, faithfulness, evaluation/index.md)
+      - [12. instruction tuning, RLHF, multimodal alignment](VLM을 위한 수학과 구조/04. Grounding, OCR, 멀티모달 정렬/12. instruction tuning, RLHF, multimodal alignment/index.md)
+    - [05. 비디오, 생성, 에이전트로 확장](VLM을 위한 수학과 구조/05. 비디오, 생성, 에이전트로 확장/index.md)
+      - [13. video token, temporal modeling, long context](VLM을 위한 수학과 구조/05. 비디오, 생성, 에이전트로 확장/13. video token, temporal modeling, long context/index.md)
+      - [14. multimodal RAG, tool use, agent loop](VLM을 위한 수학과 구조/05. 비디오, 생성, 에이전트로 확장/14. multimodal RAG, tool use, agent loop/index.md)
+      - [15. diffusion, image generation, unified multimodal model](VLM을 위한 수학과 구조/05. 비디오, 생성, 에이전트로 확장/15. diffusion, image generation, unified multimodal model/index.md)
 - Development
   - [풀스택실전스터디](풀스택실전스터디/index.md)
     - [커리큘럼](풀스택실전스터디/커리큘럼/index.md)
