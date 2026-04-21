@@ -24,41 +24,12 @@ DEFAULT_SITE_URL = "https://wiki.do4ai.com"
 DEFAULT_SITE_TITLE = "do4ai Wiki"
 DEFAULT_LOCALE = "en"
 DEFAULT_NAVIGATION_MODE = "TREE"
+DEFAULT_TOC_POSITION = "right"
 DATA_SOURCES_ROOT = "Data Sources"
 SYNC_TAG = "atlas-sync"
 STATE_VERSION = 1
-MANAGED_HEAD_START = "<!-- atlas-managed:inject-head:start -->"
-MANAGED_HEAD_END = "<!-- atlas-managed:inject-head:end -->"
-MANAGED_CSS_START = "/* atlas-managed:inject-css:start */"
-MANAGED_CSS_END = "/* atlas-managed:inject-css:end */"
-LEGACY_SB_CLIENT_CLEANUP_HEAD = """<script>
-(() => {
-  try {
-    const marker = 'atlas-legacy-sw-cleanup-v1';
-    if (!('serviceWorker' in navigator)) {
-      return;
-    }
-    navigator.serviceWorker.getRegistrations().then(async regs => {
-      let hadLegacy = false;
-      for (const reg of regs) {
-        const urls = [reg.active?.scriptURL, reg.installing?.scriptURL, reg.waiting?.scriptURL].filter(Boolean);
-        if (urls.some(url => /service_worker\\.js(?:\\?|$)/.test(url) || /\\/\\.client\\//.test(url))) {
-          hadLegacy = true;
-        }
-        await reg.unregister();
-      }
-      if ('caches' in window) {
-        const keys = await caches.keys();
-        await Promise.all(keys.map(key => caches.delete(key)));
-      }
-      if (hadLegacy && !sessionStorage.getItem(marker)) {
-        sessionStorage.setItem(marker, '1');
-        location.reload();
-      }
-    }).catch(() => {});
-  } catch (_) {}
-})();
-</script>"""
+LEGACY_MANAGED_HEAD_START = "<!-- atlas-managed:inject-head:start -->"
+LEGACY_MANAGED_HEAD_END = "<!-- atlas-managed:inject-head:end -->"
 ATLAS_THEME_CSS = """
 :root {
   --atlas-text: #1f2937;
@@ -73,8 +44,8 @@ ATLAS_THEME_CSS = """
 .contents {
   width: 100%;
   max-width: 960px;
-  margin-left: clamp(2rem, 6vw, 7rem);
-  margin-right: auto;
+  margin-left: auto;
+  margin-right: clamp(2rem, 6vw, 7rem);
   color: var(--atlas-text);
   font-size: 1.04rem;
   line-height: 1.8;
@@ -218,7 +189,7 @@ ATLAS_THEME_CSS = """
 @media (max-width: 760px) {
   .contents {
     max-width: none;
-    margin-left: 0;
+    margin-right: 0;
   }
 
   .contents .atlas-home-grid {
@@ -339,13 +310,14 @@ def login(base_url: str, username: str, password: str) -> str:
     return result["jwt"]
 
 
-def inject_managed_block(existing: str, start_marker: str, end_marker: str, payload: str) -> str:
-    content = existing.replace(LEGACY_SB_CLIENT_CLEANUP_HEAD, "").strip()
-    pattern = re.compile(re.escape(start_marker) + r".*?" + re.escape(end_marker), flags=re.DOTALL)
-    content = pattern.sub("", content).strip()
-    block = f"{start_marker}\n{payload.rstrip()}\n{end_marker}"
-    updated = f"{content}\n\n{block}" if content else block
-    return updated.rstrip() + "\n"
+def strip_legacy_inject_head(existing: str) -> str:
+    content = existing
+    managed_block = re.compile(
+        re.escape(LEGACY_MANAGED_HEAD_START) + r".*?" + re.escape(LEGACY_MANAGED_HEAD_END),
+        flags=re.DOTALL,
+    )
+    content = managed_block.sub("", content)
+    return content.strip() + ("\n" if content.strip() else "")
 
 
 def minify_css_for_match(css: str) -> str:
@@ -404,7 +376,7 @@ def ensure_site_config(base_url: str, token: str, *, site_url: str, site_title: 
         raise WikiSyncError(response.get("message") or response.get("slug") or "failed to update site config")
 
 
-def ensure_client_cleanup_theming(base_url: str, token: str) -> None:
+def ensure_wikijs_theming(base_url: str, token: str) -> None:
     data = graphql(
         base_url,
         """
@@ -427,16 +399,16 @@ def ensure_client_cleanup_theming(base_url: str, token: str) -> None:
         timeout=30,
     )
     config = data["theming"]["config"]
-    desired_head = inject_managed_block(
-        str(config.get("injectHead") or ""),
-        MANAGED_HEAD_START,
-        MANAGED_HEAD_END,
-        LEGACY_SB_CLIENT_CLEANUP_HEAD,
-    )
+    desired_head = strip_legacy_inject_head(str(config.get("injectHead") or ""))
+    desired_toc_position = DEFAULT_TOC_POSITION
     desired_css = ATLAS_THEME_CSS.rstrip() + "\n"
     current_css = str(config.get("injectCSS") or "")
     css_matches = minify_css_for_match(current_css) == minify_css_for_match(desired_css)
-    if (config.get("injectHead") or "") == desired_head and css_matches:
+    if (
+        (config.get("injectHead") or "") == desired_head
+        and css_matches
+        and (config.get("tocPosition") or "left") == desired_toc_position
+    ):
         return
 
     data = graphql(
@@ -474,7 +446,7 @@ def ensure_client_cleanup_theming(base_url: str, token: str) -> None:
             "theme": config["theme"],
             "iconset": config["iconset"],
             "darkMode": bool(config["darkMode"]),
-            "tocPosition": config.get("tocPosition") or "left",
+            "tocPosition": desired_toc_position,
             "injectCSS": desired_css,
             "injectHead": desired_head,
             "injectBody": config.get("injectBody") or "",
@@ -484,9 +456,7 @@ def ensure_client_cleanup_theming(base_url: str, token: str) -> None:
     )
     response = data["theming"]["setConfig"]["responseResult"]
     if not response["succeeded"]:
-        raise WikiSyncError(
-            response.get("message") or response.get("slug") or "failed to update Wiki.js theming cleanup script"
-        )
+        raise WikiSyncError(response.get("message") or response.get("slug") or "failed to update Wiki.js theming")
 
 
 def ensure_navigation_mode(base_url: str, token: str, mode: str) -> None:
@@ -621,12 +591,6 @@ def save_state(state_file: Path, pages: Dict[str, str]) -> None:
 def iter_content_files(vault_root: Path) -> List[Path]:
     results: List[Path] = []
     for path in sorted(vault_root.rglob("*.md")):
-        rel = path.relative_to(vault_root)
-        rel_posix = rel.as_posix()
-        if rel_posix == "CONFIG.md":
-            continue
-        if rel_posix.startswith("Library/"):
-            continue
         results.append(path)
     return results
 
@@ -1368,7 +1332,7 @@ def sync_pages(
 
     token = login(base_url, admin_email, admin_password)
     ensure_site_config(base_url, token, site_url=site_url, site_title=site_title)
-    ensure_client_cleanup_theming(base_url, token)
+    ensure_wikijs_theming(base_url, token)
     ensure_navigation_mode(base_url, token, navigation_mode)
     remote_pages = list_remote_pages(base_url, token, locale)
     remote_by_path = {page["path"]: page for page in remote_pages}

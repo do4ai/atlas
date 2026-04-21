@@ -6,6 +6,7 @@
 - 인프라와 운영: 별도 GitOps 저장소에서 담당
 - 이 저장소의 책임: `vault/` 아래 마크다운 문서와 Wiki.js 동기화 스크립트 유지
 - 배포 런타임: GitOps 저장소에서 `vault/`를 Wiki.js 인스턴스로 동기화
+- 레거시 설정, 스타일, 템플릿 파일은 저장소에 두지 않는다.
 
 ## 갱신 방식
 
@@ -35,7 +36,4 @@ python3 scripts/wiki_wikijs_sync.py sync --dry-run
 - `ensure-setup`: 빈 Wiki.js 인스턴스를 자동 초기화
 - `sync`: `vault/` 문서를 Wiki.js page path로 변환하고 create, update, delete 반영
 
-동기화 대상은 `vault/` 전체이며, 다음 경로는 제외한다.
-
-- `vault/CONFIG.md`
-- `vault/Library/`
+동기화 대상은 `vault/` 아래 Markdown 문서 전체다.
