@@ -1,10 +1,5 @@
 ---
 title: "AI를 위한 수학"
-source_kind: page
-source_path: ssot/pages/31ee313f58b980d68c5ad8ed9d5aeff8__SenseCore AI LAB, AI융합학부/children/lecture/32be313f58b980078dbbeed4f006f95b__Lecture/children/math/32be313f58b981e7b26fea2d45e6fa7f__AI를 위한 수학
-notion_id: 32be313f58b981e7b26fea2d45e6fa7f
-notion_url: https://www.notion.so/32be313f58b981e7b26fea2d45e6fa7f
-parent_notion_id: 32be313f58b980078dbbeed4f006f95b
 ---
 # AI를 위한 수학
 이 책은 초등 산수만 알고 있어도 위에서 아래로 차례대로 읽으면 AI 수학의 큰 흐름을 따라갈 수 있게 만든 교본입니다. 먼저 상황을 이해하고, 그다음에 낱말을 익히고, 마지막에 기호와 식을 붙입니다. 목표는 공식을 많이 외우는 것이 아니라, 수식이 무엇을 말하는지 끝까지 읽을 수 있는 힘을 만드는 것입니다.

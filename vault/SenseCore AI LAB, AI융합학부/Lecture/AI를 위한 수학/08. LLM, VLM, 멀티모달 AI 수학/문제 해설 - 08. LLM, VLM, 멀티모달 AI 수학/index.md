@@ -1,10 +1,5 @@
 ---
 title: "문제 해설 - 08. LLM, VLM, 멀티모달 AI 수학"
-source_kind: page
-source_path: ssot/pages/31ee313f58b980d68c5ad8ed9d5aeff8__SenseCore AI LAB, AI융합학부/children/lecture/32be313f58b980078dbbeed4f006f95b__Lecture/children/math/32be313f58b981e7b26fea2d45e6fa7f__AI를 위한 수학/children/32be313f58b9810b873aef61d2e45e6d__08. 신경망과 현대 AI 수학/children/32ce313f58b9813aa92acd49915a2672__문제 해설 - 08. LLM, VLM, 멀티모달 AI 수학
-notion_id: 32ce313f58b9813aa92acd49915a2672
-notion_url: https://www.notion.so/32ce313f58b9813aa92acd49915a2672
-parent_notion_id: 32be313f58b9810b873aef61d2e45e6d
 ---
 # 문제 해설 - 08. LLM, VLM, 멀티모달 AI 수학
 이 페이지는 08단계의 연습문제 해설을 모아 둔 페이지입니다. 정답만 확인하지 말고, 어떤 정의와 원리를 써야 했는지까지 같이 점검합니다.

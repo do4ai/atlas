@@ -1,10 +1,5 @@
 ---
 title: "1. 문자와 식, 다항식의 구조"
-source_kind: page
-source_path: ssot/pages/31ee313f58b980d68c5ad8ed9d5aeff8__SenseCore AI LAB, AI융합학부/children/lecture/32be313f58b980078dbbeed4f006f95b__Lecture/children/math/32be313f58b981e7b26fea2d45e6fa7f__AI를 위한 수학/children/32be313f58b9819998e4ec302aefd21d__01. 숫자와 계산의 감각/children/32ce313f58b981338945ea55f75d4abe__1. 문자와 식, 다항식의 구조
-notion_id: 32ce313f58b981338945ea55f75d4abe
-notion_url: https://www.notion.so/32ce313f58b981338945ea55f75d4abe
-parent_notion_id: 32be313f58b9819998e4ec302aefd21d
 ---
 # 1강. 문자와 식, 다항식의 구조
 

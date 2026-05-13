@@ -1,14 +1,9 @@
 ---
 title: "문제 해설 - 05. 최적화와 정보이론"
-source_kind: page
-source_path: ssot/pages/31ee313f58b980d68c5ad8ed9d5aeff8__SenseCore AI LAB, AI융합학부/children/lecture/32be313f58b980078dbbeed4f006f95b__Lecture/children/math/32be313f58b981e7b26fea2d45e6fa7f__AI를 위한 수학/children/32be313f58b981218ea7f570cd9c2cc9__05. 벡터와 행렬의 시작/children/32ce313f58b981a8855bceb05dce902c__문제 해설 - 05. 최적화와 정보이론
-notion_id: 32ce313f58b981a8855bceb05dce902c
-notion_url: https://www.notion.so/32ce313f58b981a8855bceb05dce902c
-parent_notion_id: 32be313f58b981218ea7f570cd9c2cc9
 ---
 # 문제 해설 - 05. 최적화와 정보이론
 
-이 페이지는 `05. 최적화와 정보이론` 단계의 모든 연습문제 해설을 모아 둔 페이지입니다.
+이 페이지는 05. 최적화와 정보이론 단계의 모든 연습문제 해설을 모아 둔 페이지입니다.
 - 정답만 보는 대신 어떤 정의와 원리를 써야 하는지까지 함께 적었습니다.
 - 손으로 먼저 풀어 본 뒤 해설을 읽고, 막힌 지점을 표시하며 복기하는 용도로 씁니다.
 

@@ -1,10 +1,5 @@
 ---
 title: "01. 숫자와 계산의 감각"
-source_kind: page
-source_path: ssot/pages/31ee313f58b980d68c5ad8ed9d5aeff8__SenseCore AI LAB, AI융합학부/children/lecture/32be313f58b980078dbbeed4f006f95b__Lecture/children/math/32be313f58b981e7b26fea2d45e6fa7f__AI를 위한 수학/children/32be313f58b9819998e4ec302aefd21d__01. 숫자와 계산의 감각
-notion_id: 32be313f58b9819998e4ec302aefd21d
-notion_url: https://www.notion.so/32be313f58b9819998e4ec302aefd21d
-parent_notion_id: 32be313f58b981e7b26fea2d45e6fa7f
 ---
 이 단계는 처음 보는 수식도 순서대로 읽어 낼 수 있게 만드는 출발 단계입니다. 문자, 식, 함수, 로그, 반복합, 회전처럼 뒤 강의에서 계속 다시 만날 말을 가장 쉬운 수준에서 먼저 익힙니다.
 

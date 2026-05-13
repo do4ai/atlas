@@ -1,10 +1,5 @@
 ---
 title: "3. 함수와 그래프"
-source_kind: page
-source_path: ssot/pages/31ee313f58b980d68c5ad8ed9d5aeff8__SenseCore AI LAB, AI융합학부/children/lecture/32be313f58b980078dbbeed4f006f95b__Lecture/children/math/32be313f58b981e7b26fea2d45e6fa7f__AI를 위한 수학/children/32be313f58b9819998e4ec302aefd21d__01. 숫자와 계산의 감각/children/32ce313f58b9819897b0fd97a9134025__3. 함수와 그래프
-notion_id: 32ce313f58b9819897b0fd97a9134025
-notion_url: https://www.notion.so/32ce313f58b9819897b0fd97a9134025
-parent_notion_id: 32be313f58b9819998e4ec302aefd21d
 ---
 # 3강. 함수와 그래프
 

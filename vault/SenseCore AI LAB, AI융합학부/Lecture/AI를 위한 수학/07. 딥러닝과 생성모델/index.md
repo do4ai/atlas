@@ -1,10 +1,5 @@
 ---
 title: "07. 딥러닝과 생성모델"
-source_kind: page
-source_path: ssot/pages/31ee313f58b980d68c5ad8ed9d5aeff8__SenseCore AI LAB, AI융합학부/children/lecture/32be313f58b980078dbbeed4f006f95b__Lecture/children/math/32be313f58b981e7b26fea2d45e6fa7f__AI를 위한 수학/children/32be313f58b98136b5e8e10cfe7f2d50__07. 확률분포와 최적화
-notion_id: 32be313f58b98136b5e8e10cfe7f2d50
-notion_url: https://www.notion.so/32be313f58b98136b5e8e10cfe7f2d50
-parent_notion_id: 32be313f58b981e7b26fea2d45e6fa7f
 ---
 # 이 단계에서 배우는 것
 이 단계에서는 모델이 어떻게 스스로 맞춰 가는지와 새로운 데이터를 어떻게 만들어 내는지를 한 흐름으로 읽습니다. 앞에서 배운 기본 도구들이 실제 과정에서 어떻게 맞물리는지 차례대로 확인합니다.
